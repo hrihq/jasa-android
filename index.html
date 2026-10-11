@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Jasa Android & Kernel — Heri Ilham Al'viansyah</title>
+<meta name="description" content="Jasa flash custom ROM, unbrick, build kernel custom, dan perbaikan aplikasi Android. Pengalaman 7+ repo kernel publik.">
+<style>
+  :root{
+    --bg:#05070d; --glass:rgba(255,255,255,.07); --stroke:rgba(255,255,255,.14);
+    --txt:#f2f4fa; --dim:#9aa3b5; --acc:#6ee7ff; --acc2:#c084fc; --ok:#34d399;
+    --r:22px; --blur:saturate(180%) blur(24px);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--txt);
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Inter,Roboto,sans-serif;
+    min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+  body::before{content:"";position:fixed;inset:0;z-index:-2;
+    background:radial-gradient(38vw 38vw at 12% -8%,rgba(110,231,255,.20),transparent 60%),
+      radial-gradient(42vw 42vw at 92% 4%,rgba(192,132,252,.18),transparent 60%),
+      radial-gradient(46vw 46vw at 50% 108%,rgba(52,211,153,.13),transparent 60%)}
+  body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+    background-size:64px 64px;mask-image:radial-gradient(circle at 50% 30%,#000,transparent 78%)}
+  .wrap{max-width:1080px;margin:auto;padding:0 clamp(16px,4vw,40px)}
+  section{padding:clamp(52px,8vh,100px) 0}
+  .glass{background:var(--glass);border:1px solid var(--stroke);border-radius:var(--r);
+    -webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);
+    box-shadow:0 12px 44px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.12),inset 0 -1px 0 rgba(0,0,0,.25)}
+
+  /* hero */
+  .hero{min-height:auto;padding-top:clamp(48px,8vh,90px);padding-bottom:clamp(40px,6vh,70px);text-align:center}
+  .pill{display:inline-flex;align-items:center;gap:8px;padding:7px 16px;border-radius:999px;font-size:13px;color:var(--dim);margin-bottom:24px}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 12px var(--ok);animation:pulse 2.2s infinite}
+  @keyframes pulse{50%{opacity:.35}}
+  h1{font-size:clamp(34px,7vw,74px);line-height:1;letter-spacing:-.035em;font-weight:800;
+    background:linear-gradient(120deg,#fff 18%,var(--acc) 52%,var(--acc2) 88%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{margin:20px auto 0;max-width:640px;color:var(--dim);font-size:clamp(15px,2.1vw,18.5px);line-height:1.65}
+  .cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+  .btn{padding:14px 28px;border-radius:999px;text-decoration:none;font-weight:600;font-size:15px;cursor:pointer;border:none;
+    transition:transform .35s cubic-bezier(.2,1.4,.4,1),box-shadow .3s;display:inline-flex;align-items:center;gap:9px}
+  .btn:hover{transform:translateY(-3px) scale(1.02)}
+  .btn-p{background:linear-gradient(120deg,var(--acc),var(--acc2));color:#05070d;box-shadow:0 10px 32px rgba(110,231,255,.35)}
+  .btn-g{background:var(--glass);color:var(--txt);border:1px solid var(--stroke);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur)}
+
+  /* proof strip */
+  .proof{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:34px}
+  .pf{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;color:#c6cede;background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.09);padding:8px 14px;border-radius:999px}
+  .pf b{color:var(--acc);font-weight:700}
+
+  .h2{font-size:clamp(25px,4vw,38px);font-weight:800;letter-spacing:-.03em;margin-bottom:10px}
+  .lead{color:var(--dim);max-width:620px;line-height:1.65;font-size:15px}
+  .sec-top{margin-bottom:34px}
+
+  /* pricing */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px}
+  .card{padding:24px;position:relative;overflow:hidden;transition:transform .4s cubic-bezier(.2,1.2,.3,1),border-color .3s;display:flex;flex-direction:column}
+  .card:hover{transform:translateY(-6px);border-color:rgba(110,231,255,.45)}
+  .card.feat{border-color:rgba(110,231,255,.5)}
+  .ico{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:22px;margin-bottom:14px;
+    background:linear-gradient(135deg,rgba(110,231,255,.2),rgba(192,132,252,.18));border:1px solid var(--stroke)}
+  .card h3{font-size:18px;font-weight:700}
+  .price{font-size:15px;font-weight:800;color:var(--ok);margin-top:6px;font-variant-numeric:tabular-nums}
+  .card>p{color:var(--dim);font-size:13.8px;line-height:1.6;margin-top:10px;flex:1}
+  ul{list-style:none;margin-top:14px;display:grid;gap:7px}
+  li{font-size:13px;color:#c6cede;display:flex;gap:8px;align-items:flex-start}
+  li::before{content:"✓";color:var(--ok);font-weight:800;flex:none}
+  .badge{position:absolute;top:16px;right:16px;font-size:10.5px;font-weight:800;letter-spacing:.06em;color:#05070d;
+    background:linear-gradient(120deg,var(--acc),var(--acc2));padding:4px 10px;border-radius:999px}
+
+  /* process */
+  .steps{display:grid;gap:12px}
+  .step{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;padding:20px 24px}
+  .step .n{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:14px;
+    background:linear-gradient(135deg,rgba(110,231,255,.22),rgba(192,132,252,.2));border:1px solid var(--stroke);color:var(--acc)}
+  .step h4{font-size:16px;font-weight:700}
+  .step p{color:var(--dim);font-size:13.5px;margin-top:4px;line-height:1.6}
+
+  /* faq */
+  .faq{display:grid;gap:10px}
+  details{padding:18px 22px;cursor:pointer}
+  summary{font-size:15px;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:center}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-size:20px;color:var(--acc);flex:none}
+  details[open] summary::after{content:"−"}
+  details p{color:var(--dim);font-size:13.8px;line-height:1.62;margin-top:10px}
+
+  /* contact */
+  .contact{text-align:center}
+  .links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+  footer{padding:34px 0 54px;text-align:center;color:#5d6577;font-size:12.5px}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,1.1,.3,1)}
+  .reveal.on{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="pill glass"><span class="dot"></span>Melayani sekarang · garansi 7 hari</span>
+    <h1>Jasa Android<br>&amp; Kernel Custom</h1>
+    <p class="sub">HP bootloop? Mau pasang custom ROM atau kernel? Aplikasi crash? Saya Heri — Android engineer yang sudah membangun dan merilis 7+ repository kernel Linux kustom secara publik. Pengerjaan cepat, hasil jalan di perangkat asli.</p>
+    <div class="cta">
+      <a class="btn btn-p" href="#harga">Lihat Harga</a>
+      <a class="btn btn-g" href="#kontak">Chat Sekarang</a>
+    </div>
+    <div class="proof">
+      <span class="pf"><b>7+</b> repo kernel publik</span>
+      <span class="pf"><b>14</b> proyek publik di GitHub</span>
+      <span class="pf"><b>2 thn</b> ngulik kernel</span>
+      <span class="pf">Linux <b>4.14</b> · clang build</span>
+    </div>
+  </div>
+</header>
+
+<section id="harga">
+  <div class="wrap">
+    <div class="sec-top reveal">
+      <div class="h2">Daftar Harga</div>
+      <p class="lead">Harga mulai di bawah ini. Anggaran beda? Chat saja, paling bisa disesuaikan dengan kebutuhannya.</p>
+    </div>
+    <div class="grid">
+
+      <div class="glass card reveal">
+        <div class="ico">🛠️</div>
+        <h3>Flash &amp; Unbrick</h3>
+        <div class="price">mulai Rp 150.000</div>
+        <p>Bootloop, softbrick, atau mau ganti ROM. Aman, data diselamatkan sebisa mungkin.</p>
+        <ul>
+          <li>Unbrick &amp; bootloop (semua merek)</li>
+          <li>Custom recovery (OrangeFox / TWRP)</li>
+          <li>Custom ROM (LineageOS &amp; turunannya)</li>
+          <li>Root aman: KernelSU / Magisk</li>
+          <li>Remote via AnyDesk atau panduan langkah demi langkah</li>
+        </ul>
+      </div>
+
+      <div class="glass card feat reveal">
+        <span class="badge">PALING LARIS</span>
+        <div class="ico">🐧</div>
+        <h3>Build Kernel Custom</h3>
+        <div class="price">mulai Rp 350.000</div>
+        <p>Kernel dikompilasi khusus untuk device lu, fitur sesuai permintaan. Ini spesialisasi saya.</p>
+        <ul>
+          <li>Linux 4.14 base, build clang toolchain</li>
+          <li>Fitur: BPF, fast charge, governors, OC/UC</li>
+          <li>Output AnyKernel3 zip siap flash</li>
+          <li>Rebranding penuh (nama, banner, versi)</li>
+          <li>Source code diserahkan ke Anda</li>
+        </ul>
+      </div>
+
+      <div class="glass card reveal">
+        <div class="ico">📱</div>
+        <h3>Perbaikan Aplikasi</h3>
+        <div class="price">mulai Rp 150.000</div>
+        <p>Aplikasi crash, ANR, error build? Diperbaiki cepat lengkap sama penjelasan penyebabnya.</p>
+        <ul>
+          <li>Crash / force close — analisis logcat</li>
+          <li>ANR &amp; optimasi main thread</li>
+          <li>Error build Gradle / sync error</li>
+          <li>Integrasi API, database, permission</li>
+          <li>Migrasi Compose, fix deprecated API</li>
+        </ul>
+      </div>
+
+      <div class="glass card reveal">
+        <div class="ico">🚀</div>
+        <h3>Bikin Aplikasi Android</h3>
+        <div class="price">mulai Rp 500.000</div>
+        <p>Dari ide sampai APK siap rilis. Jetpack Compose, UI modern, dijamin jalan di perangkat asli.</p>
+        <ul>
+          <li>Jetpack Compose + Material 3</li>
+          <li>Kamera, ML Kit, lokasi, database Room</li>
+          <li>Source code + dokumentasi diserahkan</li>
+          <li>Revisi sampai aplikasi berjalan</li>
+        </ul>
+      </div>
+
+      <div class="glass card reveal">
+        <div class="ico">🌐</div>
+        <h3>Website / Landing Page</h3>
+        <div class="price">mulai Rp 300.000</div>
+        <p>Website portofolio atau landing page usaha. Selesai dalam 1 hari, siap online.</p>
+        <ul>
+          <li>Responsif (HP, tablet, desktop)</li>
+          <li>Tema dark glass modern</li>
+          <li>Animasi smooth + SEO dasar</li>
+          <li>Deploy ke GitHub Pages / Netlify</li>
+        </ul>
+      </div>
+
+      <div class="glass card reveal">
+        <div class="ico">💬</div>
+        <h3>Konsultasi Teknis</h3>
+        <div class="price">mulai Rp 100.000</div>
+        <p>Bingung masalah teknis Android atau build kernel? Ngobrol sampai kelar.</p>
+        <ul>
+          <li>Review arsitektur aplikasi</li>
+          <li>Saran toolchain &amp; setup build</li>
+          <li>Troubleshooting spesifik</li>
+          <li>Via chat atau call</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="cara" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-top reveal">
+      <div class="h2">Cara Kerja</div>
+      <p class="lead">Gampang, gak ribet. 4 langkah dari chat sampai kelar.</p>
+    </div>
+    <div class="steps">
+      <div class="glass step reveal"><div class="n">1</div><div><h4>Chat &amp; ceritakan masalahnya</h4><p>Kirim detail kendaraan/device atau error yang muncul. Saya balas cepat dan kasih estimasi harga + waktu.</p></div></div>
+      <div class="glass step reveal"><div class="n">2</div><div><h4>Bayar DP 50%</h4><p>Lewat DANA / transfer bank. Sisa dibayar setelah pekerjaan selesai dan Anda sudah lihat hasilnya.</p></div></div>
+      <div class="glass step reveal"><div class="n">3</div><div><h4>Saya kerjakan</h4><p>Flash/build/fix. Progress dilaporkan, file hasil dikirim atau dieksekusi bareng via remote.</p></div></div>
+      <div class="glass step reveal"><div class="n">4</div><div><h4>Selesai + garansi 7 hari</h4><p>Hasil dikasih, Anda cek. Kalau ada masalah lagi dalam 7 hari yang berhubungan dengan pengerjaan, diperbaiki gratis.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-top reveal">
+      <div class="h2">Pertanyaan</div>
+    </div>
+    <div class="faq">
+      <details class="glass reveal" open><summary>Harus kasih HP-nya langsung?</summary><p>Tidak harus. Bisa via remote (AnyDesk/TeamViewer) atau saya kirim panduan langkah demi langkah yang Anda ikuti sendiri. Untuk unbrick parah, pengiriman device bisa dibahas.</p></details>
+      <details class="glass reveal"><summary>Device saya merek apa saja bisa?</summary><p>Semua merek welcome. Yang paling sering saya tangani: Xiaomi keluarga SM6150 (Redmi Note 12 Pro 4G dan sejenisnya), karena di situlah kernel saya bangun. Merek lain tetap bisa — chat dulu untuk memastikan.</p></details>
+      <details class="glass reveal"><summary>Data saya aman gak?</summary><p>Saya backup sebisa mungkin sebelum eksekusi. Tapi sebaiknya Anda juga backup data penting sebelum mulai, sebagai jaga-jaga.</p></details>
+      <details class="glass reveal"><summary>Pembayaran lewat mana?</summary><p>DANA atau transfer bank. DP 50% di awal, sisanya setelah selesai dan Anda sudah lihat hasilnya.</p></details>
+      <details class="glass reveal"><summary>Garansinya berlaku untuk apa?</summary><p>7 hari setelah pengerjaan. Kalau masalah yang sama muncul lagi atau ada error akibat pengerjaan saya, diperbaiki gratis. Tidak berlakal untuk kerusakan fisik atau air.</p></details>
+      <details class="glass reveal"><summary>Kernel custom buat device apa saja?</summary><p>Terutama device yang kernel source-nya tersedia publik (Xiaomi banyak yang tersedia). Chatkan tipe device + fitur yang Anda mau, saya cek dulu ketersediaan source-nya.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="kontak">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="h2">Yuk Mulai</div>
+      <p class="lead" style="margin:auto">Chat sekarang, ceritakan masalahnya. Balas cepat, estimasi jelas, gak ada basa-basi.</p>
+      <div class="links">
+        <a class="btn btn-p" href="mailto:heriilhamalviansyah28@gmail.com?subject=Jasa%20Android%20-%20[pesan]">✉️ Email Saya</a>
+        <a class="btn btn-g" href="https://github.com/hrihq" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12a11.5 11.5 0 0 0 7.9 10.9c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 1.7 2.7 1.2 3.3.9.1-.7.4-1.2.7-1.5-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.2-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0C17.1 4.7 18.1 5 18.1 5c.6 1.6.2 2.8.1 3.1.8.9 1.2 1.9 1.2 3.2 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A11.5 11.5 0 0 0 23.5 12C23.5 5.7 18.3.5 12 .5z"/></svg>
+          Lihat Karya Saya</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">Heri Ilham Al'viansyah · Android &amp; Kernel Developer · github.com/hrihq</div></footer>
+
+<script>
+  const io=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add("on")),{threshold:.12,rootMargin:"0px 0px -40px 0px"});
+  document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
