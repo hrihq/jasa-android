@@ -1,24 +1,29 @@
-# 🛠️ Jasa Android & Kernel Custom
+# Heri Ilham Al'viansyah — Jasa Android & Kernel Engineering
 
-Halaman jualan: **https://hrihq.github.io/jasa-android**
+Landing page: **https://hrihq.github.io/jasa-android**
+
+## Identitas visual
+
+Editorial dark, mono untuk semua data kernel/build, satu aksen amber (#E8A33D).
+Konten hero adalah string kernel asli: `4.14.357-glade-g494360a6a374 (hrihq@LineageOS)`.
+Konten defconfig adalah fragmen config asli (CONFIG_BPF, CONFIG_FORCE_FAST_CHARGE, dll).
 
 ## Layanan
 
 | Jasa | Harga mulai |
 |---|---|
-| Flash & Unbrick (ROM/recovery/root) | Rp 150.000 |
 | Build kernel custom (Linux 4.14, clang, AnyKernel3) | Rp 350.000 |
+| Flash & unbrick (ROM/recovery/root) | Rp 150.000 |
 | Perbaikan aplikasi Android (crash/ANR/build error) | Rp 150.000 |
 | Bikin aplikasi Android (Jetpack Compose) | Rp 500.000 |
 | Website / landing page | Rp 300.000 |
 | Konsultasi teknis | Rp 100.000 |
 
-## Kenapa saya
+## Bukti
 
-- 7+ repository kernel publik di GitHub: Glade-Kernel, Positron-Sweet2, D-77-kernel, los_kernel_xiaomi_sm6150
-- Linux 4.14, build clang toolchain, BPF, KernelSU, AnyKernel3
-- Aplikasi Android dengan Jetpack Compose + Material 3
-- Semua pengujian di perangkat fisik, bukan emulator
+Kernel publik di github.com/hrihq: Glade-Kernel, Positron-Sweet2, D-77-kernel,
+los_kernel_xiaomi_sm6150, Glade-AnyKernel3, anykernel3, d-77-kernel1.
+Kernel string asli: `Linux 4.14.357-glade-g494360a6a374`.
 
 ## Kontak
 
